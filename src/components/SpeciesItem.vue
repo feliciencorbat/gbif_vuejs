@@ -4,6 +4,7 @@
       {{ species.scientificName }}
     </div>
     <div class="card-body">
+
     </div>
   </div>
 </template>
@@ -18,7 +19,7 @@ export default {
       species: {},
     }
   },
-  mounted() {
+  created() {
     getSpecies(this.$route.params.id).then(result => {
       this.species = result;
     });

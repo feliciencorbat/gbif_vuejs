@@ -1,4 +1,5 @@
 import axios from "axios";
+import {parseAsSpecies} from "@/classes/Species.ts";
 
 const baseUrl = 'https://api.gbif.org/v1';
 async function getSpeciesList(search) {
@@ -8,15 +9,15 @@ async function getSpeciesList(search) {
             q: search,
         }
     });
-    speciesList = response.data;
+    speciesList = response.data
     return speciesList;
 }
 
 async function getSpecies(id) {
-    let species;
     const response = await axios.get(baseUrl+'/species/' + id);
-    species = response.data;
-    return species;
+    return response.data.map(
+        response => parseAsSpecies(response)
+    );
 }
 
 export { getSpeciesList, getSpecies };
