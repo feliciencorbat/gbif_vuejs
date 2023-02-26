@@ -28,7 +28,6 @@ export default {
     getList() {
       getSpeciesList(this.search).then(result => {
         this.speciesList = result;
-        console.log(this.speciesList)
       });
     }
   },

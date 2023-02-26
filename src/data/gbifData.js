@@ -19,4 +19,11 @@ async function getSpecies(id) {
     return species;
 }
 
-export { getSpeciesList, getSpecies };
+async function getSpeciesImages(id) {
+    let speciesImages;
+    const response = await axios.get(baseUrl+'/occurrence/search/?mediaType=StillImage&limit=20&taxon_key=' + id);
+    speciesImages = response.data;
+    return speciesImages;
+}
+
+export { getSpeciesList, getSpecies, getSpeciesImages };
