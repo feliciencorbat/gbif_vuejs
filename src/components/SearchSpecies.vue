@@ -1,7 +1,7 @@
 <template>
   <input type="text" class="form-control mb-3" placeholder="Chercher une espèce" id="search" v-model="search">
 
-  <div v-for="species in speciesList" v-bind:key="species.key">
+  <div v-for="species in speciesList" :key="species.key">
     <div class="card mb-3">
       <div class="card-header">
         {{ species.scientificName }}
