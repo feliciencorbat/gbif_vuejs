@@ -10,6 +10,9 @@
           <li class="nav-item">
             <router-link class="nav-link active" aria-current="page" to="/">Chercher une espèce</router-link>
           </li>
+          <li class="nav-item">
+            <router-link class="nav-link active" aria-current="page" to="/topics">Sujets du forum</router-link>
+          </li>
         </ul>
       </div>
     </div>

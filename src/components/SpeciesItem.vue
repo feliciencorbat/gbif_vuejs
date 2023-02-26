@@ -6,9 +6,9 @@
     <div class="card-body">
       <div class="row">
         <div class="col-md-6">
-          <p>Rang: {{ species.rank }}</p>
-          <p>Statut: {{ species.taxonomicStatus }}</p>
-          <p>Nom vernaculaire: {{ species.vernacularName }}</p>
+          <p v-if="species.rank">Rang: {{ species.rank }}</p>
+          <p v-if="species.taxonomicStatus">Statut: {{ species.taxonomicStatus }}</p>
+          <p v-if="species.vernacularName">Nom vernaculaire: {{ species.vernacularName }}</p>
         </div>
         <div class="col-md-6">
           <div id="carouselSpecies" class="carousel slide" data-bs-ride="carousel">
@@ -17,8 +17,8 @@
                    :class="index === 0 ? ' active' : ''">
                 <img class="d-block w-100" v-bind:src="image.media[0].identifier" :alt="image.media[0].references">
                 <div class="carousel-caption d-none d-md-block">
-                  <h5>par {{ image.media[0].creator }}</h5>
-                  <p>Source: <a :href="image.media[0].references">{{ image.media[0].references }}</a></p>
+                  <h5 v-if="image.media[0].creator">par {{ image.media[0].creator }}</h5>
+                  <p v-if="image.media[0].references">Source: <a :href="image.media[0].references">{{ image.media[0].references }}</a></p>
                 </div>
               </div>
               <button class="carousel-control-prev" type="button" data-bs-target="#carouselSpecies"
