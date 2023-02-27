@@ -1,5 +1,6 @@
 import axios from "axios";
-import Species from '../models/Species'
+import Species from '../models/Species';
+import SpeciesImage from "@/models/SpeciesImage";
 import {plainToClass} from 'class-transformer';
 
 const baseUrl = 'https://api.gbif.org/v1';
@@ -11,9 +12,8 @@ async function getSpeciesList(search) {
             q: search,
         }
     });
-    let list = response.data
     speciesList = [];
-    list.map(species => (
+    response.data.map(species => (
         speciesList.push(
             plainToClass(Species, species, { excludeExtraneousValues: true })
             )
@@ -30,9 +30,12 @@ async function getSpecies(id) {
 }
 
 async function getSpeciesImages(id) {
-    let speciesImages;
     const response = await axios.get(baseUrl+'/occurrence/search/?mediaType=StillImage&limit=20&taxon_key=' + id);
-    speciesImages = response.data;
+    let results = response.data.results;
+    let speciesImages = [];
+    results.map(
+        occurence => speciesImages.push(plainToClass(SpeciesImage, occurence.media[0], { excludeExtraneousValues: true }))
+    );
     return speciesImages;
 }
 
