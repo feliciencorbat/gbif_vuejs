@@ -6,8 +6,8 @@
     <div class="card-body">
       <div class="row">
         <div class="col-md-6">
-          <p v-if="species.rank">Rang: {{ species.rank }}</p>
-          <p v-if="species.taxonomicStatus">Statut: {{ species.taxonomicStatus }}</p>
+          <p v-if="species.rank">Rang: {{ species.getRank() }}</p>
+          <p v-if="species.taxonomicStatus">Statut: {{ species.getStatus() }}</p>
           <p v-if="species.vernacularName">Nom vernaculaire: {{ species.vernacularName }}</p>
         </div>
         <div class="col-md-6">
