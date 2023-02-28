@@ -18,4 +18,5 @@
     </div>
   </nav>
   <router-view/>
+  
 </template>

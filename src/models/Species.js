@@ -1,10 +1,6 @@
 import {Expose} from 'class-transformer'
 
 class Species {
-    constructor(key) {
-        this.key = key;
-    }
-
     @Expose()
     key;
 
